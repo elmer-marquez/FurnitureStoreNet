@@ -17,6 +17,8 @@ namespace FurnitureStore.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddRouting((options)=>options.LowercaseUrls = true);
+
             builder.Services.AddDbContext<ApplicationDBContext>((options) =>
             {
                 options.UseSqlite(builder.Configuration.GetConnectionString("FurnitureStoreContext"));

@@ -79,7 +79,7 @@ namespace FurnitureStore.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Categories");
-
+             
             migrationBuilder.DropTable(
                 name: "Clients");
 
