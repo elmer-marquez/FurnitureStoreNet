@@ -26,13 +26,22 @@ namespace FurnitureStore.Api.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(p.Id == id);
+            var product = await _context.Products.FirstOrDefaultAsync(pd=>pd.Id == id);
 
             if(product == null)
             {
                 return NotFound();
             }
             return Ok(product);
+        }
+
+        [HttpGet("category/{categoryID:int}")]
+        public async Task<IEnumerable<Product>> GetByCategoryId(int categoryID)
+        {
+
+            return await _context.Products
+                .Where(pd=>pd.CategoryId == categoryID)
+                .ToListAsync();
         }
 
         [HttpPost]
